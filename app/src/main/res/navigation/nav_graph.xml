@@ -33,7 +33,7 @@
             app:destination="@id/homeFragment" />
         <argument
             android:name="note"
-            app:argType="com.example.notesroompractice.model.Note"
-            app:nullable="true" />
+            app:argType="com.roisul.jaran.model.Note"
+            app:nullable="true"/>
     </fragment>
 </navigation>

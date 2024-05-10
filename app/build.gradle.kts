@@ -63,8 +63,7 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
 
     // navigation safe args
-    val nav_version = "2.7.7"
-    implementation("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
+    val nav_version = "2.7.5"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
