@@ -28,4 +28,9 @@ class NoteViewModel(app: Application, private val noteRepository: NoteRepository
 
     fun searchNote(query: String?) =
         noteRepository.searchNote(query)
+
+    fun addToFavorites(note: Note) = viewModelScope.launch {
+        noteRepository.insertNote(note)
+    }
+    fun getFavoriteNote() = noteRepository.getFavoriteNotes()
 }

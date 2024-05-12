@@ -12,6 +12,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.roisul.jaran.MainActivity
@@ -27,6 +28,8 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
     private val binding get() = homeBinding!!
     private lateinit var notesViewModel: NoteViewModel
     private lateinit var noteAdapter: NoteAdapter
+
+//    private lateinit var homeView: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +52,8 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         binding.addNoteFab.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_addNoteFragment)
         }
+
+//        homeView = view
     }
 
     private fun updateUI(note: List<Note>?) {
@@ -112,7 +117,19 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         menuSearch.setOnQueryTextListener(this)
     }
 
+//    private fun navigateToProfile() {
+//        val navController = requireActivity().findNavController(R.id.profileMenu)
+//        navController.navigate(R.id.action_homeFragment_to_profileFragment)
+////        view.findNavController().popBackStack(R.id.profileFragment, false)
+//    }
+
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        return false
+        return when(menuItem.itemId) {
+            R.id.profileMenu -> {
+                view?.findNavController()?.navigate(R.id.action_homeFragment_to_profileFragment)
+//                navigateToProfile()
+                true
+            } else -> false
+        }
     }
 }

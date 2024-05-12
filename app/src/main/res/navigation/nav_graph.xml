@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_homeFragment_to_editNoteFragment"
             app:destination="@id/editNoteFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
@@ -36,4 +39,8 @@
             app:argType="com.roisul.jaran.model.Note"
             app:nullable="true"/>
     </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.roisul.jaran.fragments.profile.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>
