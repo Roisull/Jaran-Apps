@@ -42,5 +42,20 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.roisul.jaran.fragments.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_addProfileFragment"
+            app:destination="@id/addProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProfileFragment"
+        android:name="com.roisul.jaran.fragments.profile.AddProfileFragment"
+        android:label="AddProfileFragment" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.roisul.jaran.fragments.profile.EditProfileFragment"
+        android:label="EditProfileFragment" />
 </navigation>
