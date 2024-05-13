@@ -75,4 +75,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
     // Annotation processor
     ksp("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
+
+//    Coil for Image Loader
+    implementation("io.coil-kt:coil:2.6.0")
 }

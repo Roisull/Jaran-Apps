@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="profileViewModel"
+            type="com.roisul.jaran.model.Profile" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        tools:context=".fragments.profile.AddProfileFragment">
+
+        <ImageView
+            android:id="@+id/ivAddImageProfile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/baseline_account_circle_24"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="5dp"
+            app:imageUri="@{profileViewModel.profileImageUri}"
+            />
+        <ImageView
+            android:id="@+id/ivGotoLocaltoUploadImage"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/baseline_backup_24"
+            android:scaleType="centerCrop"
+            app:tint="@color/green"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginBottom="20dp"
+            />
+        <EditText
+            android:id="@+id/etProfileNameFragmentAddProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="tulis nama ente"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            />
+        <EditText
+            android:id="@+id/etProfileSocMedFragmentAddProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="tulis sosmed ente"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            />
+
+    </LinearLayout>
+</layout>

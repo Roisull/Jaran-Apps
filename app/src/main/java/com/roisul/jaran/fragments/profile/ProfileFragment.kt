@@ -8,13 +8,18 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import coil.load
 import com.roisul.jaran.MainActivity
 import com.roisul.jaran.R
 import com.roisul.jaran.databinding.FragmentProfileBinding
+import com.roisul.jaran.model.Profile
 import com.roisul.jaran.viewmodel.ProfileViewModel
 
 class ProfileFragment : Fragment(R.layout.fragment_profile), MenuProvider {
@@ -32,7 +37,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), MenuProvider {
         profileBinding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -44,6 +48,20 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), MenuProvider {
         binding.btnAddProfile.setOnClickListener {
             it.findNavController().navigate(R.id.action_profileFragment_to_addProfileFragment)
         }
+
+        replaceUiProfile()
+    }
+
+    private fun replaceUiProfile(){
+        profileViewModel.getProfiles().observe(viewLifecycleOwner, Observer {
+            it.firstOrNull()?.let {
+                binding.apply {
+                    tvProfileName.text = it.profileName
+                    tvProfileSocMed.text = it.profileSocMed
+                    ivProfile.load(it.profileImageUri)
+                }
+            }
+        })
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -57,6 +75,21 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), MenuProvider {
                 view?.findNavController()?.navigate(R.id.action_profileFragment_to_editProfileFragment)
                 true
             } else -> false
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        profileBinding = null
+    }
+}
+
+object ProfileBindingAdapters {
+    @JvmStatic
+    @BindingAdapter("imageUri")
+    fun loadImage(imageView: ImageView, imageUrl: String?){
+        imageUrl?.let {
+            imageView.load(it)
         }
     }
 }

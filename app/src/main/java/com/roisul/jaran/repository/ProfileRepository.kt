@@ -8,4 +8,6 @@ class ProfileRepository(private val db: NoteDatabase) {
     suspend fun insertProfile(profile: Profile) = db.getProfileDao().insertProfile(profile)
     suspend fun deleteProfile(profile: Profile) = db.getProfileDao().deleteProfile(profile)
     suspend fun updateProfile(profile: Profile) = db.getProfileDao().updateProfile(profile)
+
+    fun getAllProfile() = db.getProfileDao().getAllProfiles()
 }

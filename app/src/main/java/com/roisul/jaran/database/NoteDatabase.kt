@@ -20,7 +20,7 @@ val MIGRATION_1_2: Migration = object : Migration(1,2) {
     }
 }
 
-@Database(entities = [Note::class, Profile::class], version = 2)
+@Database(entities = [Note::class, Profile::class], version = 2, exportSchema = false)
 abstract class NoteDatabase: RoomDatabase() {
     abstract fun getNoteDao(): NoteDao
     abstract fun getProfileDao(): ProfileDao
