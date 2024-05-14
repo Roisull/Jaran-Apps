@@ -1,6 +1,7 @@
 package com.roisul.jaran.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -85,14 +86,15 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
     }
 
     private fun searchNote(query: String?) {
-        val searchQuery = "%$query"
-
+        val searchQuery = "%$query%"
+        Log.d("HomeFragment", "searchNote called with query: $searchQuery")
         notesViewModel.searchNote(searchQuery).observe(this) {list ->
+            Log.d("HomeFragment", "searchNote result: ${list.size} items found")
             noteAdapter.differ.submitList(list)
         }
     }
 
-    override fun onQueryTextSubmit(p0: String?): Boolean {
+    override fun onQueryTextSubmit(query: String?): Boolean {
         return false
     }
 
