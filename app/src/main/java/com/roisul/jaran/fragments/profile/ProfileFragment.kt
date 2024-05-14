@@ -59,6 +59,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), MenuProvider {
                     tvProfileName.text = it.profileName
                     tvProfileSocMed.text = it.profileSocMed
                     ivProfile.load(it.profileImageUri)
+
+                    currentProfile = it
                 }
             }
         })
@@ -72,7 +74,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), MenuProvider {
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         return when(menuItem.itemId) {
             R.id.editProfilMenu -> {
-                view?.findNavController()?.navigate(R.id.action_profileFragment_to_editProfileFragment)
+                currentProfile?.let {
+                    val action = ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment(it)
+                    view?.findNavController()?.navigate(action)
+                }
                 true
             } else -> false
         }
@@ -82,6 +87,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), MenuProvider {
         super.onDestroy()
         profileBinding = null
     }
+    private var currentProfile: Profile? = null
 }
 
 object ProfileBindingAdapters {

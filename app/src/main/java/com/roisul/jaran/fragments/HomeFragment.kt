@@ -117,17 +117,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         menuSearch.setOnQueryTextListener(this)
     }
 
-//    private fun navigateToProfile() {
-//        val navController = requireActivity().findNavController(R.id.profileMenu)
-//        navController.navigate(R.id.action_homeFragment_to_profileFragment)
-////        view.findNavController().popBackStack(R.id.profileFragment, false)
-//    }
-
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         return when(menuItem.itemId) {
             R.id.profileMenu -> {
                 view?.findNavController()?.navigate(R.id.action_homeFragment_to_profileFragment)
-//                navigateToProfile()
                 true
             } else -> false
         }
